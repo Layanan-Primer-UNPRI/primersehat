@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f70">
+  <meta name="description"
+    content="PrimerSehat — skrining kesehatan awal, edukasi, dan informasi layanan kesehatan primer.">
+  <title>PrimerSehat — Lebih Dekat, Lebih Sehat</title>
+  <style>
+    :root {
+      --green: #0c9879;
+      --green-dark: #08665f;
+      --mint: #eaf8f3;
+      --ink: #173b4a;
+      --muted: #617782;
+      --line: #dce9e9;
+      --white: #fff;
+      --blue: #edf7ff;
+      --shadow: 0 12px 34px rgba(16, 74, 76, .08)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 86px
+    }
+
+    body {
+      margin: 0;
+      background: #fbfefd;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    button,
+    a,
+    input,
+    select {
+      outline-color: #0c9879
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8f0ef
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+      font-size: 1.32rem;
+      letter-spacing: -.04em;
+      color: var(--green-dark)
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--mint);
+      color: var(--green);
+      font-size: 1.5rem
+    }
+
+    .brand small {
+      display: block;
+      font-size: .68rem;
+      letter-spacing: 0;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: -4px
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: .9rem;
+      color: #3b5965
+    }
+
+    .nav-links a:hover {
+      color: var(--green)
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 19px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 750;
+      cursor: pointer;
+      transition: .2s
+    }
+
+    .btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px)
+    }
+
+    .btn.secondary {
+      background: #fff;
+      border: 1px solid #b8ddd4;
+      color: var(--green-dark)
+    }
+
+    .btn.full {
+      width: 100%
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 9px 12px;
+      background: white;
+      color: var(--ink)
+    }
+
+    .hero {
+      padding: 56px 0 36px;
+      background: radial-gradient(ellipse at 82% 35%, #d9f5f1 0, transparent 34%), linear-gradient(120deg, #f8fffc, #effaf9)
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 34px
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      background: #ddf4ef;
+      color: var(--green-dark);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 750
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 4.5rem);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+      margin: 17px 0 8px
+    }
+
+    .hero h1 span {
+      color: var(--green)
+    }
+
+    .tagline {
+      font-size: 1.35rem;
+      margin: 0 0 12px;
+      font-weight: 650
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 560px
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 22px 0
+    }
+
+    .trust-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 25px
+    }
+
+    .trust {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      color: #45616a
+    }
+
+    .trust b {
+      display: block;
+      color: var(--ink)
+    }
+
+    .trust-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #d8f2e7;
+      color: var(--green-dark);
+      font-size: 1.1rem
+    }
+
+    .hero-art {
+      min-height: 300px;
+      position: relative;
+      display: grid;
+      place-items: center
+    }
+
+    .hero-circle {
+      position: absolute;
+      width: min(100%, 440px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #c9efed, #e6faf3);
+      border: 1px solid #d7f1ed
+    }
+
+    .family {
+      position: relative;
+      z-index: 1;
+      width: 90%;
+      max-width: 430px;
+      text-align: center
+    }
+
+    .family-emoji {
+      font-size: clamp(5rem, 13vw, 9rem);
+      line-height: 1.45;
+      filter: drop-shadow(0 10px 7px #b2d9d1)
+    }
+
+    .quote {
+      position: absolute;
+      right: 0;
+      top: 28px;
+      max-width: 185px;
+      background: white;
+      padding: 14px 16px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      font-size: .85rem;
+      color: #345963
+    }
+
+    .quote strong {
+      color: var(--green);
+      font-size: 1.2rem
+    }
+
+    section {
+      padding: 30px 0
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px
+    }
+
+    .section-heading h2 {
+      font-size: 1.45rem;
+      letter-spacing: -.035em;
+      margin: 0
+    }
+
+    .section-heading p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: .94rem
+    }
+
+    .screening-grid {
+      display: grid;
+      grid-template-columns: 1.45fr .9fr;
+      gap: 18px;
+      align-items: stretch
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow)
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 4px;
+      font-size: 1.18rem
+    }
+
+    .card-sub {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: 0 0 18px
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px
+    }
+
+    .field label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid #d4e2e5;
+      border-radius: 10px;
+      padding: 11px 10px;
+      background: #fff;
+      color: var(--ink)
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px #d9f4ec
+    }
+
+    .form-actions {
+      margin-top: 18px
+    }
+
+    .result-card {
+      display: flex;
+      flex-direction: column
+    }
+
+    .result-status {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 14px;
+      background: #eff9f2;
+      margin: 8px 0 12px
+    }
+
+    .status-icon {
+      width: 42px;
+      height: 42px;
+      flex: none;
+      border-radius: 50%;
+      background: #ccefd9;
+      color: #138754;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      font-weight: 900
+    }
+
+    .result-status h3 {
+      margin: 0;
+      color: #148653;
+      font-size: 1.08rem
+    }
+
+    .result-status p {
+      margin: 2px 0 0;
+      font-size: .8rem;
+      color: #547269
+    }
+
+    .metrics {
+      display: grid;
+      gap: 0
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #edf2f3;
+      font-size: .85rem
+    }
+
+    .metric strong {
+      text-align: right
+    }
+
+    .pill {
+      font-size: .72rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #e0f5e6;
+      color: #167a49;
+      white-space: nowrap
+    }
+
+    .recommendation {
+      margin-top: 14px;
+      padding: 13px;
+      border-radius: 13px;
+      background: var(--blue);
+      font-size: .83rem;
+      color: #33596c
+    }
+
+    .recommendation b {
+      display: block;
+      color: #12689b;
+      margin-bottom: 3px
+    }
+
+    .notice {
+      font-size: .76rem;
+      color: var(--muted);
+      margin-top: 12px
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px
+    }
+
+    .edu-card {
+      border-radius: 17px;
+      padding: 18px;
+      border: 1px solid #e4efed;
+      background: linear-gradient(140deg, #f0fbf1, #fff);
+      min-height: 160px
+    }
+
+    .edu-card:nth-child(2) {
+      background: linear-gradient(140deg, #fff1f2, #fff)
+    }
+
+    .edu-card:nth-child(3) {
+      background: linear-gradient(140deg, #edf7ff, #fff)
+    }
+
+    .edu-card:nth-child(4) {
+      background: linear-gradient(140deg, #fff8df, #fff)
+    }
+
+    .edu-icon {
+      font-size: 1.8rem
+    }
+
+    .edu-card h3 {
+      margin: 7px 0 5px;
+      font-size: 1rem
+    }
+
+    .edu-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .83rem
+    }
+
+    .text-link {
+      font-weight: 750;
+      font-size: .82rem;
+      color: var(--green-dark);
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .service-card {
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: white;
+      padding: 18px;
+      display: flex;
+      gap: 13px;
+      align-items: flex-start
+    }
+
+    .service-icon {
+      flex: none;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e8f7f4;
+      font-size: 1.3rem
+    }
+
+    .service-card h3 {
+      margin: 0 0 5px;
+      font-size: .98rem
+    }
+
+    .service-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .83rem
+    }
+
+    .service-card .btn {
+      padding: 8px 12px;
+      font-size: .8rem
+    }
+
+    .about {
+      background: #f0faf7;
+      border-block: 1px solid #e0f0ec
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 30px;
+      align-items: center
+    }
+
+    .about p {
+      color: var(--muted)
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px
+    }
+
+    .about-point {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      font-size: .85rem
+    }
+
+    .about-point b {
+      display: block;
+      margin-bottom: 3px
+    }
+
+    footer {
+      padding: 24px 0;
+      background: white
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap
+    }
+
+    .footer-copy {
+      font-size: .82rem;
+      color: var(--muted)
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-size: .82rem;
+      color: var(--muted)
+    }
+
+    dialog {
+      border: 0;
+      border-radius: 20px;
+      padding: 0;
+      max-width: min(520px, 92vw);
+      width: 100%;
+      box-shadow: 0 24px 70px #163b4a38;
+      color: var(--ink)
+    }
+
+    dialog::backdrop {
+      background: #092e35a8;
+      backdrop-filter: blur(3px)
+    }
+
+    .dialog-inner {
+      padding: 24px
+    }
+
+    .dialog-inner h2 {
+      margin: 0 0 8px
+    }
+
+    .dialog-inner p {
+      color: var(--muted)
+    }
+
+    .close-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 18px
+    }
+
+    .small-note {
+      font-size: .8rem;
+      color: var(--muted)
+    }
+
+    @media(max-width:900px) {
+      .nav-links {
+        gap: 14px
+      }
+
+      .nav-cta {
+        display: none
+      }
+
+      .hero-grid {
+        gap: 10px
+      }
+
+      .screening-grid {
+        grid-template-columns: 1fr
+      }
+
+      .fields {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .education-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr
+      }
+
+      .service-card {
+        align-items: center
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:640px) {
+      .nav {
+        min-height: 66px
+      }
+
+      .menu-toggle {
+        display: block
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        padding: 18px 5%;
+        background: white;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0
+      }
+
+      .nav-links.open {
+        display: flex
+      }
+
+      .nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid #edf3f2
+      }
+
+      .hero {
+        padding: 36px 0 25px
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero h1 {
+        font-size: 3.1rem
+      }
+
+      .tagline {
+        font-size: 1.15rem
+      }
+
+      .hero-art {
+        min-height: 245px;
+        order: -1
+      }
+
+      .hero-circle {
+        width: 250px
+      }
+
+      .family-emoji {
+        font-size: 6rem
+      }
+
+      .quote {
+        top: 2px;
+        right: 0;
+        font-size: .75rem;
+        max-width: 150px
+      }
+
+      .trust-row {
+        gap: 10px
+      }
+
+      .trust {
+        flex: 1 1 42%
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column
+      }
+
+      .card {
+        padding: 17px
+      }
+
+      .fields {
+        gap: 11px
+      }
+
+      .field label {
+        font-size: .76rem
+      }
+
+      .field input,
+      .field select {
+        padding: 10px 8px;
+        font-size: .88rem
+      }
+
+      .education-grid {
+        gap: 10px
+      }
+
+      .edu-card {
+        padding: 14px;
+        min-height: 0
+      }
+
+      .edu-card h3 {
+        font-size: .92rem
+      }
+
+      .edu-card p {
+        font-size: .8rem
+      }
+
+      .about-points {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column
+      }
+
+      .brand {
+        font-size: 1.15rem
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      * {
+        transition: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#beranda" aria-label="PrimerSehat beranda"><span
+          class="brand-icon">✚</span><span>Primer<span style="color:var(--green)">Sehat</span><small>Layanan Kesehatan
+            Primer Digital</small></span>
+          </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <!-- <a href="#beranda">Beranda</a>
+        <a href="#skrining">Skrining</a>
+        <a href="#edukasi">Edukasi</a> -->
+        <!-- <a href="#layanan">Layanan</a> -->
+        <!-- <a href="#tentang">Tentang</a> -->
+      </nav>
+      <!-- <a class="btn nav-cta" href="#layanan">⌖ Cari Layanan</a> -->
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Layanan Kesehatan Primer Digital</span>
+          <h1>Primer<span>Sehat</span></h1>
+          <div class="tagline">Lebih Dekat, Lebih Sehat.</div>
+          <p>Mulai langkah sederhana untuk menjaga kesehatan Anda dan keluarga melalui skrining awal, edukasi
+            terpercaya, dan informasi layanan kesehatan primer.</p>
+          <!-- <div class="hero-actions"><a class="btn" href="#skrining">Mulai Skrining Sekarang <span
+                aria-hidden="true">→</span></a><a class="btn secondary" href="#edukasi">Jelajahi Edukasi</a></div> -->
+          <div class="trust-row">
+            <div class="trust"><span class="trust-icon">✓</span><span><b>Mudah digunakan</b>Langkah sederhana</span>
+            </div>
+            <div class="trust"><span class="trust-icon">♡</span><span><b>Promotif & preventif</b>Peduli kesehatan</span>
+            </div>
+            <div class="trust"><span class="trust-icon">⌂</span><span><b>Untuk keluarga</b>Informasi praktis</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Ilustrasi keluarga dan layanan kesehatan">
+          <div class="hero-circle"></div>
+          <div class="family">
+            <div class="family-emoji" aria-hidden="true">👨🏻‍⚕️👩🏻‍👧🏻‍👦🏻</div>
+            <div style="font-weight:800;color:var(--green-dark)">Anda ingin SEHAT, <p>maka mulailah dari langkah kecil</p></div>
+          </div>
+          <!-- <div class="quote"><strong>“</strong> Kenali kondisi kesehatan Anda dan lakukan pencegahan sejak dini.</div> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="skrining">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>♡ Skrining Kesehatan Awal</h2>
+            <p>Isi data berikut untuk melihat ringkasan indikator kesehatan dasar.</p>
+          </div>
+        </div>
+        <div class="screening-grid">
+          <form class="card" id="screeningForm">
+            <h3 class="card-title">🩺 Data Pemeriksaan</h3>
+            <p class="card-sub">Masukkan data terbaru jika Anda mengetahuinya. Kolom bertanda * wajib diisi.</p>
+            <div class="fields">
+              <div class="field"><label for="age">Usia (tahun) *</label><input id="age" type="number" min="18" max="120"
+                  value="35" required></div>
+              <div class="field"><label for="sex">Jenis kelamin</label><select id="sex">
+                  <option value="l">Laki-laki</option>
+                  <option value="p">Perempuan</option>
+                  <option value="x">Tidak disebutkan</option>
+                </select></div>
+              <div class="field"><label for="weight">Berat badan (kg) *</label><input id="weight" type="number" min="2"
+                  max="350" step=".1" value="70" required></div>
+              <div class="field"><label for="height">Tinggi badan (cm) *</label><input id="height" type="number"
+                  min="40" max="250" step=".1" value="170" required></div>
+              <div class="field"><label for="sys">Sistolik (mmHg)</label><input id="sys" type="number" min="50"
+                  max="300" placeholder="Contoh: 120"></div>
+              <div class="field"><label for="dia">Diastolik (mmHg)</label><input id="dia" type="number" min="30"
+                  max="200" placeholder="Contoh: 80"></div>
+              <div class="field"><label for="glucose">Gula darah (mg/dL)</label><input id="glucose" type="number"
+                  min="20" max="800" placeholder="Isi jika ada"></div>
+              <div class="field"><label for="smoke">Merokok saat ini?</label><select id="smoke">
+                  <option value="no">Tidak</option>
+                  <option value="yes">Ya</option>
+                  <option value="unknown">Tidak ingin menjawab</option>
+                </select></div>
+            </div>
+            <div class="form-actions"><button class="btn full" type="submit">Lihat Ringkasan Skrining →</button></div>
+            <!-- <p class="notice">Data hanya diproses di browser pada halaman ini dan tidak dikirim atau disimpan ke server.
+            </p> -->
+          </form>
+          <aside class="card result-card" aria-live="polite">
+            <h3 class="card-title">Hasil Skrining Anda</h3>
+            <p class="card-sub" id="resultTime">Ringkasan berdasarkan data yang dimasukkan.</p>
+            <div class="result-status" id="statusBox">
+              <div class="status-icon" id="statusIcon">✓</div>
+              <div>
+                <h3 id="statusTitle">Ringkasan tersedia</h3>
+                <p id="statusDesc">Lengkapi data dan pilih lihat ringkasan.</p>
+              </div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><span>Indeks Massa Tubuh (IMT)</span><strong id="bmiValue">—</strong></div>
+              <div class="metric"><span>Tekanan darah</span><strong id="bpValue">Belum diisi</strong></div>
+              <div class="metric"><span>Gula darah</span><strong id="glucoseValue">Belum diisi</strong></div>
+              <div class="metric"><span>Kebiasaan merokok</span><strong id="smokeValue">Tidak</strong></div>
+            </div>
+            <div class="recommendation"><b>ℹ Rekomendasi umum</b><span id="recommendationText">Isi data skrining untuk
+                melihat saran umum. Hasil ini bukan diagnosis medis.</span></div>
+            <p class="notice">Jika mengalami nyeri dada berat, sesak napas berat, pingsan, atau gejala darurat lain,
+              segera cari pertolongan medis.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="edukasi">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>▤ Edukasi Kesehatan</h2>
+            <p>Langkah kecil yang dapat mendukung kesehatan Anda dan keluarga.</p>
+          </div>
+        </div>
+        <div class="education-grid">
+          <article class="edu-card">
+            <div class="edu-icon" aria-hidden="true">🥗</div>
+            <h3>Pola Makan Seimbang</h3>
+            <p>Utamakan variasi sayur, buah, sumber protein, dan batasi gula, garam, serta lemak berlebih.</p><button
+              class="text-link" data-info="makan">Baca selengkapnya →</button>
+          </article>
+          <article class="edu-card">
+            <div class="edu-icon" aria-hidden="true">🏃</div>
+            <h3>Aktivitas Fisik</h3>
+            <p>Bergerak secara teratur sesuai kemampuan dan kurangi waktu duduk terlalu lama.</p><button
+              class="text-link" data-info="aktivitas">Baca selengkapnya →</button>
+          </article>
+          <article class="edu-card">
+            <div class="edu-icon" aria-hidden="true">🚭</div>
+            <h3>Berhenti Merokok</h3>
+            <p>Berhenti merokok membantu mengurangi risiko penyakit kronis dan melindungi keluarga.</p><button
+              class="text-link" data-info="rokok">Baca selengkapnya →</button>
+          </article>
+          <article class="edu-card">
+            <div class="edu-icon" aria-hidden="true">💉</div>
+            <h3>Imunisasi</h3>
+            <p>Periksa status imunisasi diri dan keluarga melalui fasilitas kesehatan.</p><button class="text-link"
+              data-info="imunisasi">Baca selengkapnya →</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="layanan">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>⌖ Temukan Layanan Kesehatan Primer</h2>
+            <p>Gunakan kanal resmi untuk menemukan fasilitas dan layanan di wilayah Anda.</p>
+          </div>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">📍</div>
+            <div>
+              <h3>Cari Puskesmas Terdekat</h3>
+              <p>Buka peta untuk mencari Puskesmas berdasarkan lokasi Anda.</p><a class="btn secondary"
+                href="https://www.google.com/maps/search/Puskesmas+terdekat/" target="_blank"
+                rel="noopener noreferrer">Cari di Peta ↗</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">🕒</div>
+            <div>
+              <h3>Jadwal dan Kontak</h3>
+              <p>Jam pelayanan berbeda di setiap fasilitas. Pastikan melalui kanal resmi setempat.</p><a
+                class="btn secondary" href="https://www.google.com/search?q=jadwal+Puskesmas+resmi" target="_blank"
+                rel="noopener noreferrer">Cari Informasi ↗</a>
+            </div>
+          </article>
+          <article class="service-card">
+            <div class="service-icon">👥</div>
+            <div>
+              <h3>Jenis Layanan</h3>
+              <p>Informasi layanan promotif, preventif, pemeriksaan awal, dan rujukan.</p><button class="btn secondary"
+                data-info="layanan">Lihat Panduan →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- <section class="about" id="tentang">
+      <div class="container about-grid">
+        <div><span class="eyebrow">Tentang PrimerSehat</span>
+          <h2>Langkah sederhana menuju masyarakat lebih sehat.</h2>
+          <p>PrimerSehat adalah prototipe portal informasi kesehatan primer yang dirancang untuk membantu pengguna
+            memahami indikator kesehatan dasar, membaca edukasi preventif, dan menemukan informasi layanan. Konten pada
+            halaman ini bersifat informatif dan bukan pengganti konsultasi tenaga kesehatan.</p>
+        </div>
+        <div class="about-points">
+          <div class="about-point"><b>♡ Promotif</b>Mendukung kebiasaan sehat.</div>
+          <div class="about-point"><b>✓ Preventif</b>Mendorong pemeriksaan rutin.</div>
+          <div class="about-point"><b>⌂ Terjangkau</b>Akses melalui perangkat Anda.</div>
+          <div class="about-point"><b>🔒 Privasi</b>Formulir demo diproses lokal di browser.</div>
+        </div>
+      </div>
+    </section> -->
+  </main>
+
+  <footer>
+    <div class="container footer-inner"><a class="brand" href="#beranda">
+      <!-- <span
+          class="brand-icon">✚</span> -->
+          <!-- <span>Primer<span style="color:var(--green)">Sehat</span><small>Layanan Kesehatan
+            Primer Digital</small></span></a> -->
+      <div class="footer-copy">© <span id="year"></span> PrimerSehat · Lebih Dekat, Lebih Sehat.</div>
+      <!-- <div class="footer-links"><a href="#tentang">Tentang</a><a href="#edukasi">Edukasi</a><a
+          href="#layanan">Layanan</a><a href="#beranda">Kembali ke atas ↑</a></div> -->
+    </div>
+  </footer>
+
+  <dialog id="infoDialog">
+    <div class="dialog-inner">
+      <h2 id="dialogTitle">Informasi</h2>
+      <p id="dialogBody"></p>
+      <p class="small-note">Informasi edukasi umum. Untuk saran sesuai kondisi pribadi, konsultasikan dengan tenaga
+        kesehatan.</p>
+      <div class="close-row"><button class="btn" id="closeDialog" type="button">Tutup</button></div>
+    </div>
+  </dialog>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    $('year').textContent = new Date().getFullYear();
+
+    const menuToggle = $('menuToggle');
+    const navLinks = $('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const opened = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(opened));
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open'); menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    function setMetric(id, value, state) {
+      const el = $(id);
+      el.textContent = value;
+      el.className = state ? 'pill' : '';
+    }
+    $('screeningForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const age = Number($('age').value), weight = Number($('weight').value), heightCm = Number($('height').value);
+      const sysRaw = $('sys').value, diaRaw = $('dia').value, glucoseRaw = $('glucose').value;
+      const sys = Number(sysRaw), dia = Number(diaRaw), glucose = Number(glucoseRaw);
+      if (!age || age < 18 || age > 120 || !weight || !heightCm) {
+        alert('Periksa kembali usia, berat badan, dan tinggi badan. Contoh ini ditujukan untuk orang dewasa.');
+        return;
+      }
+      const bmi = weight / ((heightCm / 100) ** 2);
+      let bmiCategory = bmi < 18.5 ? 'Berat badan kurang' : bmi < 25 ? 'Rentang normal' : bmi < 30 ? 'Berat badan berlebih' : 'Obesitas';
+      setMetric('bmiValue', `${bmi.toFixed(1)} — ${bmiCategory}`);
+      const concerns = [];
+      if (sysRaw !== '' && diaRaw !== '') {
+        if (sys < 50 || sys > 300 || dia < 30 || dia > 200) {
+          setMetric('bpValue', 'Periksa input', false); concerns.push('Periksa kembali angka tekanan darah yang dimasukkan.');
+        } else {
+          const bpText = `${sys}/${dia} mmHg`;
+          const bpHigh = sys >= 140 || dia >= 90;
+          const bpLow = sys < 90 || dia < 60;
+          setMetric('bpValue', bpText, bpHigh || bpLow);
+          if (sys >= 180 || dia >= 120) concerns.push('Tekanan darah sangat tinggi. Ulangi pengukuran dengan benar; jika tetap tinggi atau disertai gejala, cari pertolongan medis segera.');
+          else if (bpHigh) concerns.push('Tekanan darah berada di atas rentang yang umumnya diharapkan. Ulangi pengukuran saat istirahat dan konsultasikan ke tenaga kesehatan.');
+          else if (bpLow) concerns.push('Tekanan darah tercatat rendah. Perhatikan gejala dan konsultasikan jika berulang atau Anda merasa tidak sehat.');
+        }
+      } else { setMetric('bpValue', 'Belum lengkap', false); }
+      if (glucoseRaw !== '') {
+        setMetric('glucoseValue', `${glucose} mg/dL`, false);
+        if (glucose < 20 || glucose > 800) concerns.push('Periksa kembali nilai gula darah yang dimasukkan.');
+        else concerns.push('Interpretasi gula darah bergantung pada jenis tes, waktu makan, dan kondisi klinis; mintalah tenaga kesehatan menilainya.');
+      } else setMetric('glucoseValue', 'Belum diisi', false);
+      const smoke = $('smoke').value;
+      setMetric('smokeValue', smoke === 'yes' ? 'Ya' : smoke === 'no' ? 'Tidak' : 'Tidak disebutkan', smoke === 'yes');
+      if (bmi < 18.5 || bmi >= 25) concerns.push('Pertimbangkan konsultasi mengenai status berat badan dan pola makan.');
+      if (smoke === 'yes') concerns.push('Berhenti merokok dapat memberi manfaat kesehatan; tenaga kesehatan dapat membantu membuat rencana.');
+      if (age >= 40) concerns.push('Diskusikan jadwal pemeriksaan faktor risiko berkala dengan tenaga kesehatan.');
+      if (!concerns.length) concerns.push('Pertahankan pola hidup sehat dan lakukan pemeriksaan rutin sesuai usia serta faktor risiko.');
+      const needsFollowup = concerns.length > 1 || (sysRaw !== '' && (sys >= 140 || dia >= 90)) || bmi < 18.5 || bmi >= 30 || smoke === 'yes';
+      $('statusTitle').textContent = needsFollowup ? 'Perlu perhatian lebih lanjut' : 'Ringkasan awal tersedia';
+      $('statusDesc').textContent = 'Berdasarkan data yang Anda masukkan, bukan diagnosis.';
+      $('statusIcon').textContent = needsFollowup ? '!' : '✓';
+      $('statusBox').style.background = needsFollowup ? '#fff6e6' : '#eff9f2';
+      $('statusIcon').style.background = needsFollowup ? '#ffebbd' : '#ccefd9';
+      $('statusIcon').style.color = needsFollowup ? '#8a5a00' : '#138754';
+      $('statusTitle').style.color = needsFollowup ? '#8a5a00' : '#148653';
+      $('recommendationText').textContent = concerns.join(' ');
+      $('resultTime').textContent = 'Diperbarui: ' + new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' });
+      $('statusBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    const info = {
+      makan: ['Pola Makan Seimbang', 'Pola makan seimbang membantu memenuhi kebutuhan energi dan zat gizi tubuh serta mencegah penyakit tidak menular. Terapkan prinsip Isi Piringku dengan mengonsumsi makanan pokok, lauk berprotein, sayur, dan buah secara proporsional. Batasi gula, garam, dan lemak berlebih, perbanyak serat, serta cukupi kebutuhan air putih. Sesuaikan pola makan dengan usia, aktivitas, dan kondisi kesehatan.'],
+      aktivitas: ['Aktivitas Fisik', 'Aktivitas fisik secara teratur membantu menjaga kesehatan jantung, mengontrol berat badan, meningkatkan kebugaran, dan mengurangi risiko penyakit tidak menular. Orang dewasa dianjurkan melakukan aktivitas aerobik intensitas sedang selama 150–300 menit per minggu, seperti berjalan cepat, bersepeda, atau berenang. Lengkapi dengan latihan penguatan otot minimal dua hari per minggu, sesuai kemampuan dan kondisi kesehatan.'],
+      rokok: ['Berhenti Merokok', 'Berhenti merokok dapat meningkatkan kesehatan paru-paru dan jantung serta mengurangi risiko kanker, stroke, dan penyakit kronis lainnya. Menghindari asap rokok juga melindungi keluarga dari bahaya perokok pasif. Mulailah dengan menetapkan tanggal berhenti, mengenali pemicu keinginan merokok, dan mencari dukungan dari keluarga atau tenaga kesehatan. Semakin cepat berhenti, semakin besar manfaatnya bagi kesehatan.'],
+      imunisasi: ['Imunisasi', 'Imunisasi membantu membentuk kekebalan tubuh terhadap penyakit menular dan mengurangi risiko komplikasi serius. Pastikan imunisasi anak dan dewasa sesuai usia, jadwal, serta rekomendasi tenaga kesehatan. Periksa catatan imunisasi secara berkala dan kunjungi Puskesmas untuk mendapatkan informasi mengenai imunisasi yang dibutuhkan.'],
+      layanan: ['Panduan Layanan Primer', 'Layanan kesehatan primer merupakan kontak pertama masyarakat untuk memperoleh pelayanan kesehatan, termasuk promosi kesehatan, pencegahan penyakit, pemeriksaan awal, dan penanganan masalah kesehatan umum. Masyarakat dapat mengakses layanan melalui Puskesmas atau klinik pratama. Jika kondisi memerlukan pemeriksaan lanjutan, tenaga kesehatan akan memberikan rujukan sesuai kebutuhan. Untuk kondisi darurat, segera cari pertolongan medis.']
+    };
+    const dialog = $('infoDialog');
+    document.querySelectorAll('[data-info]').forEach(button => button.addEventListener('click', () => {
+      const item = info[button.dataset.info];
+      if (!item) return;
+      $('dialogTitle').textContent = item[0]; $('dialogBody').textContent = item[1];
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+      else alert(item[0] + '\\n\\n' + item[1]);
+    }));
+    $('closeDialog').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+    // Render the default example values immediately for a useful first view.
+    $('screeningForm').dispatchEvent(new Event('submit', { cancelable: true }));
+  </script>
+</body>
+
+</html>
